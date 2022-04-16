@@ -16,6 +16,7 @@ services:
       - radicle-services
     depends_on:
       - git-server
+
   git-server:
     image: gcr.io/radicle-services/git-server:${RADICLE_IMAGE_TAG:-latest}
     entrypoint: /usr/local/bin/radicle-git-server.sh --git-receive-pack $RADICLE_GIT_SERVER_OPTS
@@ -35,21 +36,22 @@ services:
       resources:
         limits:
           memory: 6gb
-  caddy:
-    image: caddy:2.4.5
-    ports:
-      - 80:80
-      - 443:443
-      - 8777:8777
-      - 8086:8086
-    volumes:
-      - $PWD/Caddyfile:/etc/caddy/Caddyfile:ro
-    environment:
-      - RADICLE_DOMAIN=$RADICLE_DOMAIN
-    container_name: caddy
-    restart: unless-stopped
-    networks:
-      - radicle-services
+
+  # caddy:
+  #   image: caddy:2.4.5
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #     - 8777:8777
+  #     - 8086:8086
+  #   volumes:
+  #     - $PWD/Caddyfile:/etc/caddy/Caddyfile:ro
+  #   environment:
+  #     - RADICLE_DOMAIN=$RADICLE_DOMAIN
+  #   container_name: caddy
+  #   restart: unless-stopped
+  #   networks:
+  #     - radicle-services
 
 networks:
   radicle-services:
