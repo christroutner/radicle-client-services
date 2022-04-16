@@ -16,6 +16,8 @@ services:
       - radicle-services
     depends_on:
       - git-server
+    ports:
+      - 8777:8777
 
   git-server:
     image: gcr.io/radicle-services/git-server:${RADICLE_IMAGE_TAG:-latest}
