@@ -38,6 +38,8 @@ services:
       resources:
         limits:
           memory: 6gb
+    ports:
+      - 8778:8778
 
   # caddy:
   #   image: caddy:2.4.5
