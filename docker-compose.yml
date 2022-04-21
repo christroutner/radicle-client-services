@@ -6,7 +6,7 @@ services:
       dockerfile: ./http-api/Dockerfile
       context: .
     volumes:
-      - /var/opt/radicle:/app/radicle:ro
+      - /mnt/HC_Volume_18866350/data-rad:/app/radicle:ro
     environment:
       RUST_LOG: info
     init: true
@@ -26,7 +26,7 @@ services:
       dockerfile: ./git-server/Dockerfile
       context: .
     volumes:
-      - /var/opt/radicle:/app/radicle
+      - /mnt/HC_Volume_18866350/data-rad:/app/radicle
     environment:
       - RUST_LOG=hyper=warn,debug
     init: true
@@ -37,7 +37,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 6gb
+          memory: 3gb
     ports:
       - 8778:8778
 

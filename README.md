@@ -7,6 +7,7 @@ The Seed Node is operated via Docker Compose. The original Docker Compose file h
 
 - The `--allow-unauthorized-keys` is applied to the git-server to allow any radicle key to push to it.
 - The `caddy` Docker file is disabled. The functionality it provided is replaced by nginx.
+- The volumes mounted by the containers are moved to a detachable hard drive.
 
 ## Networking
 
